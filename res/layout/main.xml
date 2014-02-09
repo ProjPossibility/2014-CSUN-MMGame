@@ -1,13 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-        >
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MyActivity"
-            />
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name" />
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnHost"
+                android:contentDescription="@string/startHost"
+                android:text="Host"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/txtServerIP"
+                  android:text="" android:visibility="visible"
+                  android:textSize="20sp"/>
+
+        <EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="192.168.44.1"  android:hint="Server IP"
+                  android:id="@+id/textIP" android:layout_marginBottom="5dp"/>
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnConnect"
+                android:contentDescription="@string/joinGame"
+                android:text="Connect"/>
+
+        <Button android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnGetIP"
+                android:text="Get IP"/>
+    </LinearLayout>
+</RelativeLayout>
