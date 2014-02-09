@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GameLogic</string>
+    <string name="dash">-----</string>
+    <string name="player_1">Player 1</string>
+    <string name="player_2">Player 2</string>
+    <string name="connection">Connection</string>
+    <string name="random">Random</string>
+    <string name="bear">Bear</string>
+    <string name="ninja">Ninja</string>
+    <string name="cowboy">Cowboy</string>
+    <string name="begin">Begin</string>
+    <string name="stability">Stability</string>
+    <string name="button">Click this button to mimic the end of a time delay</string>
+
+</resources>
