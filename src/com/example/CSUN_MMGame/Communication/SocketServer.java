@@ -129,6 +129,24 @@ public class SocketServer extends CommsHandler {
             commsHandlerInterface.connectionStateChanged(STATE_WAITING_FOR_CONNECTION);
 
             try {
+                InetAddress group = null;
+                MulticastSocket msock = null;
+                int x = 0;
+                final String data = "bearninjacowboy";
+                DatagramPacket sendPacket = new DatagramPacket(data.getBytes(), data.getBytes().length, broadcastAddress, PreferencesHandler.multicastPort);
+
+
+                try {
+                    //Address broadcasting socket
+                    msock = new MulticastSocket(PreferencesHandler.multicastPort);
+                    msock.setBroadcast(true);
+                    msock.setReuseAddress(true);
+                    group = InetAddress.getByAddress(new byte[]{(byte) 239, (byte) 255, (byte) 42, (byte) 99});
+                    msock.joinGroup(group);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //main server socket
                 ServerSocket serverSocket = new ServerSocket(port);
                 serverSocket.setReuseAddress(true);
                 serverSocket.setSoTimeout(PreferencesHandler.socketTimeout);
@@ -141,6 +159,18 @@ public class SocketServer extends CommsHandler {
                     } catch (IOException e) {
                         socket = null;
                     }
+
+                    x++;
+                    if (x == 150) {
+                        x = 0;
+                        if (msock != null) {
+                            msock.send(sendPacket);
+                        }
+                    }
+                }
+                if (msock != null) {
+                    msock.leaveGroup(group);
+                    msock.close();
                 }
 
                 socket.setReuseAddress(true);

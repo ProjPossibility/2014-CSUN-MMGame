@@ -1,6 +1,8 @@
 package com.example.CSUN_MMGame;
 
 import android.util.Log;
+import android.widget.Toast;
+import com.example.CSUN_MMGame.Communication.PeerFinder;
 import com.example.CSUN_MMGame.Game.ClientGame;
 import com.example.CSUN_MMGame.Game.GameStateMachine;
 import com.example.CSUN_MMGame.Game.ServerGame;
@@ -117,4 +119,17 @@ public class MyActivity extends Activity {
         finish();
 
     }
+
+    PeerFinder.PeerFinderInterface peerFinderInterface = new PeerFinder.PeerFinderInterface() {
+        @Override
+        public void peerFound(String ip) {
+            startConnect(ip);
+        }
+
+        @Override
+        public void findFailed() {
+            enableAll();
+            Toast.makeText(context, "Find failed", Toast.LENGTH_SHORT).show();
+        }
+    };
 }

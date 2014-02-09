@@ -22,6 +22,14 @@ public class ClientGame extends GameStateMachine{
     CommsHandler.CommsHandlerInterface commsHandlerInterface = new CommsHandler.CommsHandlerInterface() {
         @Override
         public void gotMessage(String message) {
+            if (message.equals("I AM SERVER")) {
+                Log.i("BearNinjaCowboy", "Server says: I AM SERVER");
+                commsHandler.writeMessage("RAWR!");
+            }
+            else if (message.equals("BANG!")) {
+                Log.i("BearNinjaCowboy", "Server says: BANG!");
+                commsHandler.writeMessage("I AM CLIENT");
+            }
 //            if (message.startsWith("SV=")) {                 //sensor value
 //                int intensity = Integer.valueOf(message.substring(3));
 //                vibrationHandler.pulsePWM(intensity);
@@ -62,6 +70,7 @@ public class ClientGame extends GameStateMachine{
                     break;
                 case CommsHandler.STATE_CONNECTED:
                     Log.i("BearNinjaCowboy", "ClientGame: connected");
+                    commsHandler.writeMessage("I AM CLIENT");
                     break;
                 case CommsHandler.STATE_ENDED_CONNECTION:
                     break;

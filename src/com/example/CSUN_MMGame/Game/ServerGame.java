@@ -25,6 +25,14 @@ public class ServerGame extends GameStateMachine {
     CommsHandler.CommsHandlerInterface commsHandlerInterface = new CommsHandler.CommsHandlerInterface() {
         @Override
         public void gotMessage(String message) {
+            if (message.equals("I AM CLIENT")) {
+                Log.i("BearNinjaCowboy", "Client says: I AM CLIENT");
+                commsHandler.writeMessage("I AM SERVER");
+            }
+            else if (message.equals("RAWR!")) {
+                Log.i("BearNinjaCowboy", "Client says: RAWR!");
+                commsHandler.writeMessage("BANG!");
+            }
 //            if (message.startsWith("SV=")) {
 //                int intensity = Integer.valueOf(message.substring(3));
 //                vibrationHandler.pulsePWM(intensity);
