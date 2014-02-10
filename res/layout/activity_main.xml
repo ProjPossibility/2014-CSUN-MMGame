@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Chris Bowles - 2/10/13
+     SS12 Coding Competition 2013 Project
+     main_activity.xml
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView android:layout_width="1px"
+               android:layout_height="1px"
+               android:id="@+id/middle"
+            android:layout_centerInParent="true"/>
+    <Button android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp"
+            android:layout_above="@id/middle"
+            android:id="@+id/btnHost"
+            android:text="Host"
+            android:textSize="70sp"/>
+    <Button android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="5dp"
+            android:layout_below="@id/middle"
+            android:id="@+id/btnConnect"
+            android:text="Connect"
+            android:textSize="70sp"/>
+
+</RelativeLayout>
